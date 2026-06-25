@@ -53,10 +53,10 @@ export default function ProductDetail() {
   // Create an array of 6 variation thumbnail images using the main product image and some related files
   const galleryImages = [
     product.image,
-    '/images/products/suit.png',
-    '/images/products/backpack.png',
-    '/images/products/wallet.png',
-    '/images/products/smartwatch.png',
+    '/images/products/polo-shirt.jpg',
+    '/images/products/blue-backpack.jpg',
+    '/images/products/blue-wallet.jpg',
+    '/images/products/smartwatch.jpg',
     product.image,
   ];
 
@@ -402,4 +402,3 @@ export default function ProductDetail() {
     </div>
   );
 }
-

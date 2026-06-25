@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ShoppingBag, User, MessageCircle, Package, ShoppingCart, Menu, Search, X, ChevronDown } from 'lucide-react';
+import { User, MessageCircle, Package, ShoppingCart, Menu, Search, X, ChevronDown } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -12,10 +12,36 @@ const navLinks = [
   { label: 'Help', section: 'help' },
 ];
 
+const languageOptions = [
+  { label: 'English, USD', flag: '/images/flags/usa.png' },
+  { label: 'English, GBP', flag: '/images/flags/uk.png' },
+  { label: 'Arabic, AED', flag: '/images/flags/uae.png' },
+  { label: 'German, EUR', flag: '/images/flags/germany.png' },
+  { label: 'French, EUR', flag: '/images/flags/france.png' },
+  { label: 'Chinese, CNY', flag: '/images/flags/china.png' },
+  { label: 'Australian, AUD', flag: '/images/flags/australia.png' },
+];
+
+const shipOptions = [
+  { country: 'United States', flag: '/images/flags/usa.png' },
+  { country: 'United Kingdom', flag: '/images/flags/uk.png' },
+  { country: 'United Arab Emirates', flag: '/images/flags/uae.png' },
+  { country: 'Germany', flag: '/images/flags/germany.png' },
+  { country: 'France', flag: '/images/flags/france.png' },
+  { country: 'China', flag: '/images/flags/china.png' },
+  { country: 'Australia', flag: '/images/flags/australia.png' },
+  { country: 'Italy', flag: '/images/flags/italy.png' },
+  { country: 'Denmark', flag: '/images/flags/denmark.png' },
+  { country: 'Russia', flag: '/images/flags/russia.png' },
+];
+
 export default function Header({ onSearch }) {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('all');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0]);
+  const [selectedShipTo, setSelectedShipTo] = useState(shipOptions[0]);
   const { cartCount } = useCart();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -33,7 +59,11 @@ export default function Header({ onSearch }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/products?search=${search}&category=${category}`);
+    const params = new URLSearchParams();
+    const trimmedSearch = search.trim();
+    if (trimmedSearch) params.set('search', trimmedSearch);
+    if (category && category !== 'all') params.set('category', category);
+    navigate(`/products${params.toString() ? `?${params.toString()}` : ''}`);
     onSearch?.(search, category);
   };
 
@@ -46,10 +76,7 @@ export default function Header({ onSearch }) {
               {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#377fe7] flex items-center justify-center shadow-[4px_0_0_rgba(13,110,253,0.2)]">
-                <ShoppingBag className="h-5 w-5 text-[#c5dcfe]" />
-              </div>
-              <span className="text-xl font-semibold text-brand-400 hidden sm:block">Brand</span>
+              <img src="/images/brand/logo-colored.svg" alt="Brand" className="h-10 w-auto" />
             </Link>
           </div>
 
@@ -162,18 +189,61 @@ export default function Header({ onSearch }) {
               )
             )}
           </div>
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1 cursor-pointer">
-                <img src="/images/flags/usa.png" alt="EN" className="w-5 h-3" />
-                English, USD
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setOpenDropdown(openDropdown === 'language' ? null : 'language')}
+                className="flex items-center gap-1 hover:text-brand-600"
+              >
+                <img src={selectedLanguage.flag} alt="" className="w-5 h-3 object-cover" />
+                {selectedLanguage.label}
                 <ChevronDown className="h-3 w-3" />
-              </span>
-              <span className="flex items-center gap-1 cursor-pointer hover:text-brand-600">
-                Ship to
-                <img src="/images/flags/usa.png" alt="Ship" className="w-5 h-3" />
-                <ChevronDown className="h-3 w-3" />
-              </span>
+              </button>
+              {openDropdown === 'language' && (
+                <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                  {languageOptions.map((option) => (
+                    <button
+                      key={option.label}
+                      type="button"
+                      onClick={() => { setSelectedLanguage(option); setOpenDropdown(null); }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-50 text-[#505050]"
+                    >
+                      <img src={option.flag} alt="" className="w-5 h-3 object-cover" />
+                      <span>{option.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
+
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setOpenDropdown(openDropdown === 'ship' ? null : 'ship')}
+                className="flex items-center gap-1 hover:text-brand-600"
+              >
+                Ship to
+                <img src={selectedShipTo.flag} alt="" className="w-5 h-3 object-cover" />
+                <ChevronDown className="h-3 w-3" />
+              </button>
+              {openDropdown === 'ship' && (
+                <div className="absolute right-0 top-full mt-2 w-56 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
+                  {shipOptions.map((option) => (
+                    <button
+                      key={option.country}
+                      type="button"
+                      onClick={() => { setSelectedShipTo(option); setOpenDropdown(null); }}
+                      className="w-full flex items-center gap-2 px-3 py-2 text-left hover:bg-gray-50 text-[#505050]"
+                    >
+                      <img src={option.flag} alt="" className="w-5 h-3 object-cover" />
+                      <span>{option.country}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

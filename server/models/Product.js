@@ -14,6 +14,7 @@ const productSchema = new mongoose.Schema(
     orders: { type: Number, default: 0 },
     featured: { type: Boolean, default: false },
     brand: { type: String, default: '' },
+    features: [{ type: String }],
     condition: { type: String, default: 'Brand new' },
     supplier: { type: String, default: 'Guanjoi Trading LLC' },
     discount: { type: String, default: '' },

@@ -23,10 +23,10 @@ export default function ProductDetail({ productId }: ProductDetailProps) {
     reviews: 32,
     sold: 154,
     images: [
-      "/images/products/suit.png",
-      "/images/products/suit.png",
-      "/images/products/suit.png",
-      "/images/products/suit.png",
+      "/images/products/polo-shirt.jpg",
+      "/images/products/polo-shirt.jpg",
+      "/images/products/polo-shirt.jpg",
+      "/images/products/polo-shirt.jpg",
     ],
     inStock: true,
     specifications: {
@@ -43,12 +43,12 @@ export default function ProductDetail({ productId }: ProductDetailProps) {
   }
 
   const relatedProducts = [
-    { id: 1, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/smartphone.png" },
-    { id: 2, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/smartwatch.png" },
-    { id: 3, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/headset.png" },
-    { id: 4, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/tablet.png" },
-    { id: 5, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/kettle.png" },
-    { id: 6, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/wallet.png" },
+    { id: 1, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/red-smartphone.jpg" },
+    { id: 2, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/smartwatch.jpg" },
+    { id: 3, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/gaming-headset.jpg" },
+    { id: 4, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/tablet.jpg" },
+    { id: 5, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/kettle.jpg" },
+    { id: 6, name: "Xiaomi Redmi 8", price: 32.0, originalPrice: 41.0, image: "/images/products/blue-wallet.jpg" },
   ]
 
   const reviews = [
@@ -58,7 +58,7 @@ export default function ProductDetail({ productId }: ProductDetailProps) {
       rating: 5,
       date: "1 week ago",
       comment: "I absolutely love this t-shirt! The quality is amazing and it fits perfectly.",
-      avatar: "/images/products/smartphone.png",
+      avatar: "/images/products/red-smartphone.jpg",
     },
     {
       id: 2,
@@ -66,7 +66,7 @@ export default function ProductDetail({ productId }: ProductDetailProps) {
       rating: 4,
       date: "2 weeks ago",
       comment: "Great product, very comfortable. Would definitely recommend!",
-      avatar: "/images/products/tablet.png",
+      avatar: "/images/products/tablet.jpg",
     },
   ]
 

@@ -5,42 +5,42 @@ export default function HomeOutdoorSection() {
     {
       name: 'Soft chairs',
       price: 'USD 19',
-      image: '/images/products/table-lamp.png',
+      image: '/images/products/table-lamp.jpg',
     },
     {
       name: 'Sofa',
       price: 'USD 19',
-      image: '/images/products/sofa.png',
+      image: '/images/products/soft-chair.jpg',
     },
     {
       name: 'Kitchen dishes',
       price: 'USD 19',
-      image: '/images/products/clay-pot.png',
+      image: '/images/products/clay-pot.jpg',
     },
     {
       name: 'Smart watches',
       price: 'USD 19',
-      image: '/images/products/smartwatch.png',
+      image: '/images/products/smartwatch.jpg',
     },
     {
       name: 'Kitchen mixer',
       price: 'USD 100',
-      image: '/images/products/juicer.png',
+      image: '/images/products/juicer.jpg',
     },
     {
       name: 'Blenders',
       price: 'USD 39',
-      image: '/images/products/juicer.png',
+      image: '/images/products/juicer.jpg',
     },
     {
       name: 'Home appliance',
       price: 'USD 19',
-      image: '/images/products/coffee-machine.png',
+      image: '/images/products/coffee-machine.jpg',
     },
     {
       name: 'Coffee maker',
       price: 'USD 10',
-      image: '/images/products/clay-pot.png',
+      image: '/images/products/clay-pot.jpg',
     },
   ];
 
@@ -58,7 +58,7 @@ export default function HomeOutdoorSection() {
         {/* Left Banner */}
         <div className="relative w-[280px] h-full flex-shrink-0 overflow-hidden">
           <img
-            src="/images/home-interior-2.png"
+            src="/images/products/soft-chair.jpg"
             alt="Home and outdoor"
             className="absolute inset-0 w-full h-full object-cover object-left scale-x-[-1] brightness-110"
           />

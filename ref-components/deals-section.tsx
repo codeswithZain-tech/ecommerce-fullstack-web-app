@@ -5,23 +5,23 @@ export default function DealsSection() {
     {
       name: 'Smart watches',
       discount: '-25%',
-      image: '/images/products/smartwatch.png',
+      image: '/images/products/smartwatch.jpg',
     },
-    { name: 'Laptops', discount: '-15%', image: '/images/products/laptop.png' },
+    { name: 'Laptops', discount: '-15%', image: '/images/products/laptop.jpg' },
     {
       name: 'GoPro cameras',
       discount: '-40%',
-      image: '/images/products/camera.png',
+      image: '/images/products/canon-camera.jpg',
     },
     {
       name: 'Headphones',
       discount: '-25%',
-      image: '/images/products/headset.png',
+      image: '/images/products/gaming-headset.jpg',
     },
     {
       name: 'Smartphones',
       discount: '-25%',
-      image: '/images/products/iphone.png',
+      image: '/images/products/iphone-red.png',
     },
   ];
 

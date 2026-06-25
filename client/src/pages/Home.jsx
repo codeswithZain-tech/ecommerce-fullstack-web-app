@@ -70,8 +70,8 @@ export default function Home() {
 
       {!loading && (
         <>
-          <ProductSection title="Home and outdoor" bgImage="/images/home-interior-2.png" products={homeProducts} categoryFilter="Home interiors" />
-          <ProductSection title="Consumer electronics and gadgets" bgImage="/images/products/tech-gadgets.png" products={electronics} categoryFilter="Consumer electronics" />
+          <ProductSection title="Home and outdoor" bgImage="/images/products/soft-chair.jpg" products={homeProducts} categoryFilter="Home interiors" />
+          <ProductSection title="Consumer electronics and gadgets" bgImage="/images/products/tablet.jpg" products={electronics} categoryFilter="Consumer electronics" />
         </>
       )}
 

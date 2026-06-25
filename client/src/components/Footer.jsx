@@ -1,5 +1,5 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ShoppingBag, Facebook, Twitter, Linkedin, Instagram, Youtube, ChevronUp } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Youtube, ChevronUp } from 'lucide-react';
 
 const footerLinks = [
   {
@@ -60,10 +60,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-7 gap-8">
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-brand-400 to-[#127FFF] rounded-lg flex items-center justify-center shadow-sm">
-                <ShoppingBag className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold text-[#8db4ff] tracking-tight">Brand</span>
+              <img src="/images/brand/logo-colored.svg" alt="Brand" className="h-11 w-auto" />
             </Link>
             <p className="text-[#505050] text-[15px] mb-6 max-w-xs leading-relaxed">
               Best information about the company gies here but now lorem ipsum is

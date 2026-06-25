@@ -16,22 +16,28 @@ router.get('/', async (req, res) => {
 
     const { search, category, featured, page = 1, limit = 12, brands, features, minPrice, maxPrice, condition, ratings, sort } = req.query;
     const query = {};
+    const andConditions = [];
 
     if (search) {
-      query.$or = [
+      andConditions.push({ $or: [
         { name: { $regex: search, $options: 'i' } },
         { category: { $regex: search, $options: 'i' } },
         { description: { $regex: search, $options: 'i' } },
-      ];
+        { brand: { $regex: search, $options: 'i' } },
+        { features: { $elemMatch: { $regex: search, $options: 'i' } } },
+      ] });
     }
-    if (category && category !== 'all') query.category = category;
+    if (category && category !== 'all') query.category = { $regex: `^${category}$`, $options: 'i' };
     if (featured === 'true') query.featured = true;
 
     if (brands && brands.length > 0) {
-      // In a real app, you might have a proper brand field.
-      // Here we match name against the brands using regex for safety if brand field isn't populated on all.
       const brandArray = brands.split(',');
-      query.$or = brandArray.map(b => ({ name: { $regex: b, $options: 'i' } }));
+      andConditions.push({
+        $or: brandArray.flatMap((brandName) => [
+          { brand: { $regex: `^${brandName}$`, $options: 'i' } },
+          { name: { $regex: brandName, $options: 'i' } },
+        ]),
+      });
     }
 
     if (minPrice || maxPrice) {
@@ -48,6 +54,17 @@ router.get('/', async (req, res) => {
 
     if (condition && condition !== 'Any') {
       query.condition = condition;
+    }
+
+    if (features && features.length > 0) {
+      const featureArray = features.split(',');
+      andConditions.push({
+        features: { $all: featureArray.map((feature) => new RegExp(`^${feature}$`, 'i')) },
+      });
+    }
+
+    if (andConditions.length > 0) {
+      query.$and = andConditions;
     }
 
     const sortMap = {

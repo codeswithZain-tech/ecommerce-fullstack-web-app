@@ -4,15 +4,15 @@ let products = initialProducts.map((p) => ({ ...p }));
 let nextId = products.length + 1;
 
 const matches = (product, { search, category, featured, brands, features, minPrice, maxPrice, condition, ratings }) => {
-  if (category && category !== 'all' && product.category !== category) return false;
+  if (category && category !== 'all' && product.category.toLowerCase() !== category.toLowerCase()) return false;
   if (featured === 'true' && !product.featured) return false;
   
   if (brands && brands.length > 0) {
     const brandList = brands.split(',');
     // If product has no brand, or brand is not in list, filter it out. 
     // To be forgiving with dummy data, we check if product.name includes the brand if brand field is missing.
-    const matchBrand = brandList.some(b => 
-      product.brand === b || product.name.toLowerCase().includes(b.toLowerCase())
+    const matchBrand = brandList.some(b =>
+      product.brand?.toLowerCase() === b.toLowerCase() || product.name.toLowerCase().includes(b.toLowerCase())
     );
     if (!matchBrand) return false;
   }
@@ -37,15 +37,16 @@ const matches = (product, { search, category, featured, brands, features, minPri
 
   if (features && features.length > 0) {
     const featureList = features.split(',');
-    if (product.features) {
-      const hasAllFeatures = featureList.every(f => product.features.includes(f));
-      if (!hasAllFeatures) return false;
-    }
+    const productFeatures = product.features || [];
+    const hasAllFeatures = featureList.every(f =>
+      productFeatures.some((feature) => feature.toLowerCase() === f.toLowerCase())
+    );
+    if (!hasAllFeatures) return false;
   }
 
   if (search) {
     const q = search.toLowerCase();
-    const hay = `${product.name} ${product.category} ${product.description || ''} ${product.brand || ''}`.toLowerCase();
+    const hay = `${product.name} ${product.category} ${product.description || ''} ${product.brand || ''} ${(product.features || []).join(' ')}`.toLowerCase();
     if (!hay.includes(q)) return false;
   }
   return true;

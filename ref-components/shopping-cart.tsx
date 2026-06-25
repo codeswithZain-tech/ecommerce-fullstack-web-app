@@ -16,7 +16,7 @@ export default function ShoppingCart() {
       size: "Medium",
       price: 78.99,
       quantity: 1,
-      image: "/images/products/suit.png",
+      image: "/images/products/polo-shirt.jpg",
     },
     {
       id: 2,
@@ -27,7 +27,7 @@ export default function ShoppingCart() {
       size: "Large",
       price: 39.0,
       quantity: 2,
-      image: "/images/products/backpack.png",
+      image: "/images/products/blue-backpack.jpg",
     },
     {
       id: 3,
@@ -38,16 +38,16 @@ export default function ShoppingCart() {
       size: "Medium",
       price: 170.0,
       quantity: 1,
-      image: "/images/products/wallet.png",
+      image: "/images/products/blue-wallet.jpg",
     },
   ])
 
   const [couponCode, setCouponCode] = useState("")
   const [savedItems] = useState([
-    { id: 1, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/laptop.png" },
-    { id: 2, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/smartphone.png" },
-    { id: 3, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/smartwatch.png" },
-    { id: 4, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/tablet.png" },
+    { id: 1, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/laptop.jpg" },
+    { id: 2, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/red-smartphone.jpg" },
+    { id: 3, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/smartwatch.jpg" },
+    { id: 4, name: "GoPro HERO8 4K Action Camera - Black", price: 99.5, image: "/images/products/tablet.jpg" },
   ])
 
   const updateQuantity = (id: number, newQuantity: number) => {

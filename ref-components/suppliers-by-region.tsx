@@ -45,7 +45,7 @@ export default function SuppliersByRegion() {
     {
       id: 8,
       country: 'Arab Emirates',
-      flag: '/images/flags/uae-alt.png',
+      flag: '/images/flags/uae.png',
       suppliers: 'shopname.ae',
     },
     {

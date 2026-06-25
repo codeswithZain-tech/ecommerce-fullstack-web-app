@@ -4,7 +4,7 @@ import { Plus, Pencil, Trash2, ShoppingBag } from 'lucide-react';
 import { getProducts, createProduct, updateProduct, deleteProduct } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
-const emptyForm = { name: '', price: '', image: '/images/products/smartphone.png', description: '', category: 'Electronics', stock: 100 };
+const emptyForm = { name: '', price: '', image: '/images/products/red-smartphone.jpg', description: '', category: 'Electronics', stock: 100 };
 
 export default function Admin() {
   const { user, logout } = useAuth();

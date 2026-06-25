@@ -5,38 +5,38 @@ export default function ConsumerElectronicsSection() {
     {
       name: 'Smart watches',
       price: 'USD 19',
-      image: '/images/products/smartwatch.png',
+      image: '/images/products/smartwatch.jpg',
     },
-    { name: 'Cameras', price: 'USD 89', image: '/images/products/camera.png' },
+    { name: 'Cameras', price: 'USD 89', image: '/images/products/canon-camera.jpg' },
     {
       name: 'Headphones',
       price: 'USD 10',
-      image: '/images/products/white-headphones.png',
+      image: '/images/products/white-headphones.jpg',
     },
     {
       name: 'Smart watches',
       price: 'USD 90',
-      image: '/images/products/smartwatch.png',
+      image: '/images/products/smartwatch.jpg',
     },
     {
       name: 'Gaming set',
       price: 'USD 35',
-      image: '/images/products/headset.png',
+      image: '/images/products/gaming-headset.jpg',
     },
     {
       name: 'Laptops & PC',
       price: 'USD 340',
-      image: '/images/products/laptop.png',
+      image: '/images/products/laptop.jpg',
     },
     {
       name: 'Smartphones',
       price: 'USD 19',
-      image: '/images/products/smartphone.png',
+      image: '/images/products/red-smartphone.jpg',
     },
     {
       name: 'Electric kettle',
       price: 'USD 240',
-      image: '/images/products/kettle.png',
+      image: '/images/products/kettle.jpg',
     },
   ];
 
@@ -54,7 +54,7 @@ export default function ConsumerElectronicsSection() {
         {/* Left Banner */}
         <div className="relative w-[280px] h-full flex-shrink-0 overflow-hidden">
           <img
-            src="/images/products/tech-gadgets.png"
+            src="/images/products/tablet.jpg"
             alt="Consumer electronics"
             className="absolute inset-0 w-full h-full object-cover"
           />
