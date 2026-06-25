@@ -60,6 +60,29 @@ npm run dev
 - Email: `admin@ecommerce.com`
 - Password: `admin123`
 
+## Vercel Deployment
+
+This project is configured for Vercel from the repository root.
+
+### Vercel build settings
+
+- Framework Preset: `Other`
+- Build Command: `npm run vercel-build`
+- Output Directory: `client/dist`
+- Install Command: leave default
+
+### Environment variables
+
+Add these in Vercel Project Settings > Environment Variables:
+
+```env
+MONGODB_URI=your_mongodb_atlas_connection_string
+JWT_SECRET=your_strong_random_secret
+CLIENT_URL=https://your-vercel-project.vercel.app
+```
+
+`MONGODB_URI` is recommended for persistent users/products. Without it, the app still runs with in-memory demo data, but new users/products are not permanently saved.
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
