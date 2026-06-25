@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const deals = [
   { name: 'Smart watches', discount: '-25%', image: '/images/products/smartwatch.jpg', category: 'Electronics' },
   { name: 'Laptops', discount: '-15%', image: '/images/products/laptop.jpg', category: 'Electronics' },
-  { name: 'GoPro cameras', discount: '-40%', image: '/images/products/canon-camera.jpg', category: 'Electronics' },
-  { name: 'Headphones', discount: '-25%', image: '/images/products/gaming-headset.jpg', category: 'Electronics' },
-  { name: 'Canon cameras', discount: '-25%', image: '/images/products/iphone-red.png', category: 'Mobile accessory' },
+  { name: 'GoPro cameras', discount: '-40%', image: '/images/products/iphone-red.png', category: 'Electronics' },
+  { name: 'Headphones', discount: '-25%', image: '/images/products/white-headphones.jpg', category: 'Electronics' },
+  { name: 'Canon cameras', discount: '-25%', image: '/images/products/canon-camera.jpg', category: 'Mobile accessory' },
 ];
 
 // Set deal end time: 4 days from now

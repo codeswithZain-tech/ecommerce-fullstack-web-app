@@ -13,6 +13,12 @@ import RecommendedItems from '../components/home/RecommendedItems';
 import ExtraServices from '../components/home/ExtraServices';
 import SuppliersByRegion from '../components/home/SuppliersByRegion';
 import { getProducts } from '../services/api';
+import {
+  CONSUMER_ELECTRONICS_ORDER,
+  HOME_INTERIOR_ORDER,
+  RECOMMENDED_ORDER,
+  sortProductsByNames,
+} from '../data/designSections';
 
 export default function Home() {
   const [featured, setFeatured] = useState([]);
@@ -32,17 +38,23 @@ export default function Home() {
     getProducts({ limit: 100 })
       .then((res) => {
         const all = res.data.products;
-        const home = all.filter((p) => p.category === 'Home interiors');
-        const elec = all.filter((p) => p.category === 'Consumer electronics' || p.category === 'Electronics');
+        const home = sortProductsByNames(
+          all.filter((p) => p.category === 'Home interiors'),
+          HOME_INTERIOR_ORDER,
+        );
+        const elec = sortProductsByNames(
+          all.filter((p) => ['Consumer electronics', 'Electronics'].includes(p.category)),
+          CONSUMER_ELECTRONICS_ORDER,
+        );
 
-        const paddedHome = home.length >= 8 ? home.slice(0, 8) : [...home, ...all.filter((p) => p.category !== 'Home interiors')].slice(0, 8);
-        const paddedElec = elec.length >= 8 ? elec.slice(0, 8) : [...elec, ...all.filter((p) => !['Consumer electronics', 'Electronics'].includes(p.category))].slice(0, 8);
-
-        setHomeProducts(paddedHome);
-        setElectronics(paddedElec);
-        return getProducts({ featured: 'true', limit: 10 });
+        setHomeProducts(home);
+        setElectronics(elec);
+        return getProducts({ limit: 100 });
       })
-      .then((res) => setFeatured(res.data.products))
+      .then((res) => {
+        const recommended = sortProductsByNames(res.data.products, RECOMMENDED_ORDER);
+        setFeatured(recommended);
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);

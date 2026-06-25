@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
 import productRoutes from './routes/products.js';
 import User from './models/User.js';
+import { syncProductCatalog } from './data/syncCatalog.js';
 
 dotenv.config();
 
@@ -59,6 +60,7 @@ export const connectDatabase = async () => {
       .then(async () => {
         console.log('MongoDB connected');
         await ensureAdminUser();
+        await syncProductCatalog();
         return mongoose.connection;
       })
       .catch((err) => {
